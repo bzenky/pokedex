@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import { Main, Header, Content } from './styles'
+import { Main, Header, Content } from '../styles/styles'
 
 import LogoPokedex from '../public/logo-pokedex.png'
 import Settings from '../public/settings.svg'
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 
         <Content>
           <Pokeball />
-          <input type="text" placeholder="Seu melhor e-mail" />
+          <input type="email" placeholder="Seu melhor e-mail" />
           <button>Acessar</button>
         </Content>
       </Main>
