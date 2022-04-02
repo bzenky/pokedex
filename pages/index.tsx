@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { IconButton, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Text, Link } from '@chakra-ui/react'
 import { Main, Header, Content, Container } from '../styles/styles'
 
@@ -9,6 +10,11 @@ import Pokeball from '../public/pokeball.svg'
 
 const Home: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const router = useRouter()
+
+  function handleAccess() {
+    router.push('/dashboard')
+  }
 
   return (
     <>
@@ -28,7 +34,7 @@ const Home: NextPage = () => {
         <Content>
           <Pokeball />
           <input type="email" placeholder="Seu melhor e-mail" />
-          <button>Acessar</button>
+          <button onClick={handleAccess}>Acessar</button>
         </Content>
 
       </Main>
