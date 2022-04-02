@@ -7,11 +7,6 @@ export const Main = styled.main`
   `
 
 export const Header = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 48px;
-    height: 80px;
     background: #dd4b4a;
   `
 
@@ -23,6 +18,10 @@ export const Content = styled.div`
     max-width: 400px;
     height: calc(100vh - 80px);
     margin: 0 auto;
+
+    @media (max-width: 420px) {
+        max-width: 260px;
+    }
 
     svg {
         margin: 0 auto;
@@ -59,4 +58,14 @@ export const Content = styled.div`
             filter: brightness(1.2);
         }
     }
-  `  
+  `
+
+export const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    height: 80px;
+    padding: 0 48px;
+    margin: 0 auto;
+`
