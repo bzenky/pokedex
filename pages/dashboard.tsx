@@ -78,7 +78,7 @@ const Dashboard: NextPage = () => {
                         <DashboardMinorCard>
                             <PokemonHWCard>
                                 <DashboardCardTitle>Height:</DashboardCardTitle>
-                                <DashboardSpan>2'04" / 0.7m</DashboardSpan>
+                                <DashboardSpan>2´04 / 0.7m</DashboardSpan>
                             </PokemonHWCard>
                             <PokemonHWCard>
                                 <DashboardCardTitle>Weight:</DashboardCardTitle>
