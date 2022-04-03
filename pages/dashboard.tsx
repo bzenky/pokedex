@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { useState } from 'react'
 import Image from 'next/image'
 import { Switch, useColorMode } from '@chakra-ui/react'
+import { gql, useQuery } from '@apollo/client';
 import {
     AsideMenu,
     DashboardCards,
@@ -32,7 +33,8 @@ import {
     PokemonTypeCard,
 } from '../styles/styles'
 
-import { gql, useQuery } from '@apollo/client';
+import { IdFormat } from '../utils/IdFormat'
+
 
 import LogoPokedex from '../public/logo-pokedex.png'
 import PokeballGif from '../public/pokeball.gif'
@@ -112,7 +114,7 @@ const Dashboard: NextPage = () => {
                                 key={pokemon.id}
                                 onClick={() => handlePokemon(pokemon.name, pokemon.id)}
                             >
-                                {pokemon.id} - {pokemon.name}
+                                {IdFormat(pokemon.id)} - {pokemon.name}
                             </DashboardPokemonListItem>
                         ))}
                     </DashboardPokemonList>
@@ -122,7 +124,7 @@ const Dashboard: NextPage = () => {
             <DashboardMain>
                 <DashboardHeader>
                     <PokemonName>
-                        {pokemonId} - {pokemonName}
+                        {IdFormat(pokemonId)} - {pokemonName}
                     </PokemonName>
                     <Switch
                         onChange={toggleColorMode}
@@ -159,7 +161,7 @@ const Dashboard: NextPage = () => {
                             <PokemonAttributesGroup>
                                 {!pokemon.loading && pokemon.data.pokemon.stats.map((stat: any) =>
                                     <PokemonProperty key={Math.random()}>
-                                        {stat.stat.name} {stat.base_stat}
+                                        {stat.base_stat} {stat.stat.name}
                                     </PokemonProperty>
                                 )}
                             </PokemonAttributesGroup>

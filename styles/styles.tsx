@@ -103,6 +103,8 @@ export const DashboardHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1420px;
+    margin: 0 auto;
 `
 
 export const DashboardSearch = styled.input`
