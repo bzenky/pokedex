@@ -83,7 +83,7 @@ export const AsideMenu = styled.div`
     width: 20%;
     padding: 16px;
     max-width: 400px;
-    min-height: 100vh;
+    height: 100vh;
     background: #dd4b4a;
     border-right: 1px solid #000;
 `
@@ -93,6 +93,10 @@ export const DashboardMain = styled.div`
     min-height: 100vh;
     padding: 48px 64px;
     background: #00b4eb;
+
+    @media (max-width: 1366px) {
+        padding: 24px 32px;
+    }
 `
 
 export const DashboardHeader = styled.div`
@@ -144,6 +148,10 @@ export const DashboardPokemonNav = styled.nav`
     height: 70%;
     overflow-y: auto;
     overscroll-behavior: contain;
+
+    @media (max-height: 768px) {
+        max-height: 420px;
+    }
 `
 
 export const DashboardPokemonList = styled.ul`
@@ -153,6 +161,8 @@ export const DashboardPokemonList = styled.ul`
 
 export const DashboardPokemonListItem = styled.li`
     color: #fff;
+    cursor: pointer;
+    text-transform: capitalize;
 
     &:not(:first-child) {
         margin-top: 16px;
@@ -182,7 +192,7 @@ export const DashboardLeftCards = styled.div`
 
 export const DashboardRightCards = styled.div`
     width: 57%;
-    width: 1000px;
+    max-width: 1000px;
 `
 
 export const DashboardCardTitle = styled.h3`
@@ -216,7 +226,7 @@ export const PokemonTypeCard = styled.div`
 `
 
 export const PokemonProperty = styled.span`
-    width: 96px;
+    width: 128px;
     height: 24px;
     margin-left: 8px;
     text-align: center;

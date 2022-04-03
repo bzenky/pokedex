@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useState } from 'react'
 import Image from 'next/image'
 import { Switch, useColorMode } from '@chakra-ui/react'
 import {
@@ -31,10 +32,69 @@ import {
     PokemonTypeCard,
 } from '../styles/styles'
 
+import { gql, useQuery } from '@apollo/client';
+
 import LogoPokedex from '../public/logo-pokedex.png'
+import PokeballGif from '../public/pokeball.gif'
 
 const Dashboard: NextPage = () => {
     const { colorMode, toggleColorMode } = useColorMode()
+    const [pokemonName, setPokemonName] = useState("bulbasaur")
+    const [pokemonId, setPokemonId] = useState("1")
+
+    const GET_POKEMONS = gql`
+    query pokemons($limit: Int, $offset: Int) {
+        pokemons(limit: $limit, offset: $offset) {
+          results {
+            id
+            url
+            name
+            image
+          }
+        }
+      }
+    `;
+
+    const GET_POKEMON = gql`
+    query pokemon($name: String!) {
+        pokemon(name: $name) {
+            height
+            weight
+            types {
+              type {
+                name
+              }
+            }
+            stats {
+              base_stat
+              stat {
+                name
+              }
+            }
+            sprites {
+              front_default
+            }
+        }
+      }
+    `;
+
+    const gqlVariables = {
+        limit: 151,
+        offset: 0,
+    };
+
+    const { data, loading } = useQuery(GET_POKEMONS, {
+        variables: gqlVariables,
+    });
+
+    const pokemon = useQuery(GET_POKEMON, {
+        variables: { name: pokemonName },
+    })
+
+    function handlePokemon(pokemonName: string, pokemonId: string) {
+        setPokemonName(pokemonName)
+        setPokemonId(pokemonId)
+    }
 
     return (
         <DashboardContent>
@@ -47,19 +107,23 @@ const Dashboard: NextPage = () => {
 
                 <DashboardPokemonNav>
                     <DashboardPokemonList>
-                        <DashboardPokemonListItem>#001 - Bulba</DashboardPokemonListItem>
-                        <DashboardPokemonListItem>#002 - Ivi</DashboardPokemonListItem>
-                        <DashboardPokemonListItem>#003 - Veno</DashboardPokemonListItem>
-                        <DashboardPokemonListItem>#004 - Charmander</DashboardPokemonListItem>
-                        <DashboardPokemonListItem>#005 - Charmeleon</DashboardPokemonListItem>
-                        <DashboardPokemonListItem>#006 - Charizard</DashboardPokemonListItem>
+                        {!loading && data.pokemons.results.map((pokemon: any) => (
+                            <DashboardPokemonListItem
+                                key={pokemon.id}
+                                onClick={() => handlePokemon(pokemon.name, pokemon.id)}
+                            >
+                                {pokemon.id} - {pokemon.name}
+                            </DashboardPokemonListItem>
+                        ))}
                     </DashboardPokemonList>
                 </DashboardPokemonNav>
             </AsideMenu>
 
             <DashboardMain>
                 <DashboardHeader>
-                    <PokemonName>#001 - Buba</PokemonName>
+                    <PokemonName>
+                        {pokemonId} - {pokemonName}
+                    </PokemonName>
                     <Switch
                         onChange={toggleColorMode}
                     />
@@ -68,32 +132,36 @@ const Dashboard: NextPage = () => {
                 <DashboardCards>
                     <DashboardLeftCards>
                         <PokemonImgCard>
-                            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png" alt="Buba" width={260} height={260} />
+                            <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={260} height={260} />
                         </PokemonImgCard>
                         <PokemonTypeCard>
                             <DashboardCardTitle>Type</DashboardCardTitle>
-                            <PokemonProperty>Normal</PokemonProperty>
-                            <PokemonProperty>Normal</PokemonProperty>
+                            {!pokemon.loading && pokemon.data.pokemon.types.map((type: any) =>
+                                <PokemonProperty key={Math.random()}>
+                                    {type.type.name}
+                                </PokemonProperty>
+                            )}
                         </PokemonTypeCard>
                         <DashboardMinorCard>
                             <PokemonHWCard>
                                 <DashboardCardTitle>Height:</DashboardCardTitle>
-                                <DashboardSpan>2´04 / 0.7m</DashboardSpan>
+                                <DashboardSpan>
+                                    {!pokemon.loading && (pokemon.data.pokemon.height / 10) + ' m'}
+                                </DashboardSpan>
                             </PokemonHWCard>
                             <PokemonHWCard>
                                 <DashboardCardTitle>Weight:</DashboardCardTitle>
-                                <DashboardSpan>15.2lbs. /6.9kg</DashboardSpan>
+                                <DashboardSpan>{!pokemon.loading && (pokemon.data.pokemon.weight / 10) + ' kg'}</DashboardSpan>
                             </PokemonHWCard>
                         </DashboardMinorCard>
                         <PokemonAttributesCard>
                             <DashboardCardTitle>Attributes</DashboardCardTitle>
                             <PokemonAttributesGroup>
-                                <PokemonProperty>45 HP</PokemonProperty>
-                                <PokemonProperty>45 SPEED</PokemonProperty>
-                                <PokemonProperty>49 ATK</PokemonProperty>
-                                <PokemonProperty>49 DEF</PokemonProperty>
-                                <PokemonProperty>65 SP.ATK.</PokemonProperty>
-                                <PokemonProperty>65 SP.DEF.</PokemonProperty>
+                                {!pokemon.loading && pokemon.data.pokemon.stats.map((stat: any) =>
+                                    <PokemonProperty key={Math.random()}>
+                                        {stat.stat.name} {stat.base_stat}
+                                    </PokemonProperty>
+                                )}
                             </PokemonAttributesGroup>
                         </PokemonAttributesCard>
                     </DashboardLeftCards>

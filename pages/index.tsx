@@ -33,8 +33,8 @@ const Home: NextPage = () => {
 
         <Content>
           <Pokeball />
-          <input type="email" placeholder="Seu melhor e-mail" />
-          <button onClick={handleAccess}>Acessar</button>
+          <input type="email" placeholder="Your best e-mail" />
+          <button onClick={handleAccess}>Access</button>
         </Content>
 
       </Main>
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
           <ModalCloseButton />
           <ModalBody>
             <Text>
-              A simple app to identify pokemons. It´s a simple pokedex, but it´s not a pokedex.
+              A simple application to identify the first 151 pokemons. It´s a simple pokedex, but it´s not a pokedex.
             </Text>
             <Text mt='16px'>
               Coded by just an ordinary trainer -
