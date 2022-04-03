@@ -130,12 +130,12 @@ const Dashboard: NextPage = () => {
                         {IdFormat(pokemonId)} - {pokemonName}
                     </PokemonName>
                     <ColorMode>
-                        <Icon as={MoonIcon} />
+                        <Icon as={SunIcon} />
                         <Switch
                             onChange={toggleColorMode}
                             mx='8px'
                         />
-                        <Icon as={SunIcon} />
+                        <Icon as={MoonIcon} />
                     </ColorMode>
                 </DashboardHeader>
 
