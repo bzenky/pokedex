@@ -42,7 +42,7 @@ import PokeballGif from '../public/pokeball.gif'
 const Dashboard: NextPage = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     const [pokemonName, setPokemonName] = useState("bulbasaur")
-    const [pokemonId, setPokemonId] = useState("1")
+    const [pokemonId, setPokemonId] = useState(1)
 
     const GET_POKEMONS = gql`
     query pokemons($limit: Int, $offset: Int) {
@@ -112,6 +112,7 @@ const Dashboard: NextPage = () => {
                         {!loading && data.pokemons.results.map((pokemon: any) => (
                             <DashboardPokemonListItem
                                 key={pokemon.id}
+                                className={pokemon.id === pokemonId ? "active" : ""}
                                 onClick={() => handlePokemon(pokemon.name, pokemon.id)}
                             >
                                 {IdFormat(pokemon.id)} - {pokemon.name}

@@ -34,6 +34,7 @@ export const Content = styled.div`
         margin: 16px 0;
         border: 1px solid #e7e7e7;
         border-radius: 4px;
+        font-size: 14px;
 
         &::placeholder {
             color: #919191;
@@ -169,10 +170,16 @@ export const DashboardPokemonListItem = styled.li`
     &:not(:first-child) {
         margin-top: 16px;
     }
+
+    &.active {
+        font-weight: 700;
+        text-decoration: underline;
+    }
 `
 
 export const PokemonName = styled.h2`
     font-size: 32px;
+    text-transform: capitalize;
 `
 
 export const DashboardCards = styled.div`
