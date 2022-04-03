@@ -76,7 +76,7 @@ export const DashboardContent = styled.div`
     width: 100vw;
 `
 
-export const AsideMenu = styled.div`
+export const AsideMenu = styled.div<{ bg: string }>`
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -85,15 +85,19 @@ export const AsideMenu = styled.div`
     padding: 16px;
     max-width: 400px;
     height: 100vh;
-    background: #dd4b4a;
+    background: ${props => props.bg};
     border-right: 1px solid #000;
+
+    transition: all 0.3s ease-in-out;
 `
 
-export const DashboardMain = styled.div`
+export const DashboardMain = styled.div<{ bg: string }>`
     width: 80%;
     min-height: 100vh;
     padding: 48px 64px;
-    background: #00b4eb;
+    background: ${props => props.bg};
+
+    transition: all 0.3s ease-in-out;
 
     @media (max-width: 1366px) {
         padding: 24px 32px;

@@ -102,7 +102,7 @@ const Dashboard: NextPage = () => {
 
     return (
         <DashboardContent>
-            <AsideMenu>
+            <AsideMenu bg={colorMode == 'light' ? '#dd4b4a' : '#460707'}>
                 <Image src={LogoPokedex} alt="Logo Pokedex" width={297} height={61} />
                 <DashboardSubtitle>Everything you wanted to know about your favorite pocket monsters!</DashboardSubtitle>
                 <DashboardSearch placeholder="Search by name or number" />
@@ -124,18 +124,18 @@ const Dashboard: NextPage = () => {
                 </DashboardPokemonNav>
             </AsideMenu>
 
-            <DashboardMain>
+            <DashboardMain bg={colorMode == 'light' ? '#00b4eb' : '#0d3e53'}>
                 <DashboardHeader>
                     <PokemonName>
                         {IdFormat(pokemonId)} - {pokemonName}
                     </PokemonName>
                     <ColorMode>
-                        <Icon as={SunIcon} />
+                        <Icon as={MoonIcon} />
                         <Switch
                             onChange={toggleColorMode}
                             mx='8px'
                         />
-                        <Icon as={MoonIcon} />
+                        <Icon as={SunIcon} />
                     </ColorMode>
                 </DashboardHeader>
 
