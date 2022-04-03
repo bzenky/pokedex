@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import Image from 'next/image'
-import { Switch, useColorMode } from '@chakra-ui/react'
+import { Icon, Switch, useColorMode } from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { gql, useQuery } from '@apollo/client';
 import {
     AsideMenu,
+    ColorMode,
     DashboardCards,
     DashboardCardTitle,
     DashboardContent,
@@ -93,7 +95,7 @@ const Dashboard: NextPage = () => {
         variables: { name: pokemonName },
     })
 
-    function handlePokemon(pokemonName: string, pokemonId: string) {
+    function handlePokemon(pokemonName: string, pokemonId: number) {
         setPokemonName(pokemonName)
         setPokemonId(pokemonId)
     }
@@ -127,9 +129,14 @@ const Dashboard: NextPage = () => {
                     <PokemonName>
                         {IdFormat(pokemonId)} - {pokemonName}
                     </PokemonName>
-                    <Switch
-                        onChange={toggleColorMode}
-                    />
+                    <ColorMode>
+                        <Icon as={SunIcon} />
+                        <Switch
+                            onChange={toggleColorMode}
+                            mx='8px'
+                        />
+                        <Icon as={MoonIcon} />
+                    </ColorMode>
                 </DashboardHeader>
 
                 <DashboardCards>

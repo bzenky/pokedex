@@ -182,6 +182,10 @@ export const PokemonName = styled.h2`
     text-transform: capitalize;
 `
 
+export const ColorMode = styled.div`
+    display: flex;
+`
+
 export const DashboardCards = styled.div`
     display: flex;
     justify-content: space-between;
