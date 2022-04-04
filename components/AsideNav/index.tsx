@@ -10,9 +10,9 @@ import {
     DashboardSubtitle,
 } from '../../styles/styles'
 
-import LogoPokedex from '../../public/logo-pokedex.png'
-
 import { IdFormat } from '../../utils/IdFormat'
+
+import LogoPokedex from '../../public/logo-pokedex.png'
 
 type ParentProps = {
     pokemonName: string

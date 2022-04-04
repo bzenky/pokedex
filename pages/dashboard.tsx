@@ -1,15 +1,12 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import Image from 'next/image'
-import { Icon, Switch, useColorMode } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { useColorMode } from '@chakra-ui/react'
 import { gql, useQuery } from '@apollo/client';
 import {
-    ColorMode,
     DashboardCards,
     DashboardCardTitle,
     DashboardContent,
-    DashboardHeader,
     DashboardLeftCards,
     DashboardMain,
     DashboardMinorCard,
@@ -23,15 +20,13 @@ import {
     PokemonEvolutionCard,
     PokemonHWCard,
     PokemonImgCard,
-    PokemonName,
     PokemonProperty,
     PokemonTypeCard,
 } from '../styles/styles'
 
-import { IdFormat } from '../utils/IdFormat'
-
 import PokeballGif from '../public/pokeball.gif'
 import { AsideNav } from '../components/AsideNav'
+import { DashHeader } from '../components/DashHeader';
 
 const Dashboard: NextPage = () => {
     const { colorMode, toggleColorMode } = useColorMode()
@@ -103,20 +98,13 @@ const Dashboard: NextPage = () => {
             />
 
             <DashboardMain bg={colorMode == 'light' ? '#00b4eb' : '#0d3e53'}>
-                <DashboardHeader>
-                    <PokemonName>
-                        {IdFormat(pokemonId)} - {pokemonName}
-                    </PokemonName>
-                    <ColorMode>
-                        <Icon as={SunIcon} />
-                        <Switch
-                            isChecked={colorMode === 'dark' ? true : false}
-                            onChange={toggleColorMode}
-                            mx='8px'
-                        />
-                        <Icon as={MoonIcon} />
-                    </ColorMode>
-                </DashboardHeader>
+
+                <DashHeader
+                    pokemonId={pokemonId}
+                    pokemonName={pokemonName}
+                    colorMode={colorMode}
+                    toggleColorMode={toggleColorMode}
+                />
 
                 <DashboardCards>
                     <DashboardLeftCards>
