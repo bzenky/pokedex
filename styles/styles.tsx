@@ -83,7 +83,7 @@ export const AsideMenu = styled.div<{ bg: string }>`
     align-items: center;
     width: 20%;
     padding: 16px;
-    max-width: 400px;
+    max-width: 350px;
     height: 100vh;
     background: ${props => props.bg};
     border-right: 1px solid #000;
@@ -92,9 +92,12 @@ export const AsideMenu = styled.div<{ bg: string }>`
 `
 
 export const DashboardMain = styled.div<{ bg: string }>`
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
     min-height: 100vh;
-    padding: 48px 64px;
+    padding: 0 64px;
     background: ${props => props.bg};
 
     transition: all 0.3s ease-in-out;
@@ -108,7 +111,8 @@ export const DashboardHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1420px;
+    width: 100%;
+    max-width: 1560px;
     margin: 0 auto;
 `
 
@@ -152,12 +156,27 @@ export const DashBoardHSeparator = styled.hr`
 
 export const DashboardPokemonNav = styled.nav`
     width: 100%;
-    height: 70%;
+    height: 63%;
+    margin-right: -33px;
     overflow-y: auto;
     overscroll-behavior: contain;
 
     @media (max-height: 768px) {
         max-height: 420px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f7f7f7;
+        border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #000;
+        border-radius: 20px;
     }
 `
 
@@ -182,8 +201,8 @@ export const DashboardPokemonListItem = styled.li`
 `
 
 export const PokemonName = styled.h2`
-    font-size: 32px;
-    text-transform: capitalize;
+    font-size: 40px;
+    text-transform: uppercase;
 `
 
 export const ColorMode = styled.div`
@@ -199,11 +218,15 @@ export const DashboardCards = styled.div`
     @media (min-width: 1921px) {
         justify-content: center;
     }
+
+    @media (min-width: 1367px) and (max-width: 1920px) {
+        justify-content: initial;
+    }
 `
 
 export const DashboardLeftCards = styled.div`
-    width: 40%;
-    max-width: 400px;
+    width: 44%;
+    max-width: 530px;
     margin-right: 32px;
 `
 
@@ -227,9 +250,13 @@ export const PokemonImgCard = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 270px;
+    height: 370px;
     background: #fff;
     border-radius: 8px;
+
+    @media (max-height: 940px) {  
+        height: 270px;
+    }
 `
 export const PokemonTypeCard = styled.div`
     display: flex;
@@ -240,6 +267,10 @@ export const PokemonTypeCard = styled.div`
     margin-top: 24px;
     background: #fff;
     border-radius: 8px;
+
+    @media (min-height: 940px) {
+        height: 48px;
+    }
 `
 
 export const PokemonProperty = styled.span`
@@ -251,8 +282,40 @@ export const PokemonProperty = styled.span`
     line-height: 1.9;
     color: #fff;
     text-transform: uppercase;
-    background-color: green;
+    background: green;
     border-radius: 16px;
+
+    @media (min-height: 940px) {
+        height: 32px;
+        line-height: 2.6;
+        width: 150px;
+        margin-left: 16px;
+    }
+
+    &.attr:nth-child(1) {
+        background: #dd4b4a;
+    }
+
+    &.attr:nth-child(2) {
+        background: #ff76a1;
+    }
+
+    &.attr:nth-child(3) {
+        background: #ff9a56;
+    }
+
+    &.attr:nth-child(4) {
+        background: #ffca00;
+    }
+
+    &.attr:nth-child(5) {
+        background: #006eea;
+    }
+
+    &.attr:nth-child(6) {
+        background: #4bc853;
+    }
+        
 `
 
 export const DashboardMinorCard = styled.div`
@@ -271,6 +334,10 @@ export const PokemonHWCard = styled.div`
     color: #252525;
     background-color: #fff;
     border-radius: 8px;
+
+    @media (min-height: 940px) {
+        height: 48px;
+    }
 `
 
 export const PokemonAttributesCard = styled.div`
@@ -318,6 +385,10 @@ export const PokemonDescriptionCard = styled.div`
     height: 384px;
     background: #fff;
     border-radius: 8px;
+
+    @media (min-height: 940px) {
+        height: 500px;
+    }
 `
 
 export const PokemonDescription = styled.p`

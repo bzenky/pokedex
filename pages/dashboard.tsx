@@ -37,7 +37,6 @@ import {
 
 import { IdFormat } from '../utils/IdFormat'
 
-
 import LogoPokedex from '../public/logo-pokedex.png'
 import PokeballGif from '../public/pokeball.gif'
 
@@ -51,9 +50,7 @@ const Dashboard: NextPage = () => {
         pokemons(limit: $limit, offset: $offset) {
           results {
             id
-            url
             name
-            image
           }
         }
       }
@@ -132,6 +129,7 @@ const Dashboard: NextPage = () => {
                     <ColorMode>
                         <Icon as={SunIcon} />
                         <Switch
+                            isChecked={colorMode === 'dark' ? true : false}
                             onChange={toggleColorMode}
                             mx='8px'
                         />
@@ -142,7 +140,7 @@ const Dashboard: NextPage = () => {
                 <DashboardCards>
                     <DashboardLeftCards>
                         <PokemonImgCard>
-                            <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={260} height={260} />
+                            <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={370} height={370} />
                         </PokemonImgCard>
                         <PokemonTypeCard>
                             <DashboardCardTitle>Type</DashboardCardTitle>
@@ -168,7 +166,7 @@ const Dashboard: NextPage = () => {
                             <DashboardCardTitle>Attributes</DashboardCardTitle>
                             <PokemonAttributesGroup>
                                 {!pokemon.loading && pokemon.data.pokemon.stats.map((stat: any) =>
-                                    <PokemonProperty key={Math.random()}>
+                                    <PokemonProperty key={Math.random()} className="attr">
                                         {stat.base_stat} {stat.stat.name}
                                     </PokemonProperty>
                                 )}
