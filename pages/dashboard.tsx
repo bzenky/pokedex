@@ -5,7 +5,6 @@ import { Icon, Switch, useColorMode } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { gql, useQuery } from '@apollo/client';
 import {
-    AsideMenu,
     ColorMode,
     DashboardCards,
     DashboardCardTitle,
@@ -15,13 +14,7 @@ import {
     DashboardMain,
     DashboardMinorCard,
     DashboardRightCards,
-    DashboardSearch,
-    DashBoardHSeparator,
-    DashboardPokemonList,
-    DashboardPokemonListItem,
-    DashboardPokemonNav,
     DashboardSpan,
-    DashboardSubtitle,
     Pokemon,
     PokemonAttributesCard,
     PokemonAttributesGroup,
@@ -37,8 +30,8 @@ import {
 
 import { IdFormat } from '../utils/IdFormat'
 
-import LogoPokedex from '../public/logo-pokedex.png'
 import PokeballGif from '../public/pokeball.gif'
+import { AsideNav } from '../components/AsideNav'
 
 const Dashboard: NextPage = () => {
     const { colorMode, toggleColorMode } = useColorMode()
@@ -99,27 +92,15 @@ const Dashboard: NextPage = () => {
 
     return (
         <DashboardContent>
-            <AsideMenu bg={colorMode == 'light' ? '#dd4b4a' : '#460707'}>
-                <Image src={LogoPokedex} alt="Logo Pokedex" width={297} height={61} />
-                <DashboardSubtitle>Everything you wanted to know about your favorite pocket monsters!</DashboardSubtitle>
-                <DashboardSearch placeholder="Search by name or number" />
 
-                <DashBoardHSeparator />
-
-                <DashboardPokemonNav>
-                    <DashboardPokemonList>
-                        {!loading && data.pokemons.results.map((pokemon: any) => (
-                            <DashboardPokemonListItem
-                                key={pokemon.id}
-                                className={pokemon.id === pokemonId ? "active" : ""}
-                                onClick={() => handlePokemon(pokemon.name, pokemon.id)}
-                            >
-                                {IdFormat(pokemon.id)} - {pokemon.name}
-                            </DashboardPokemonListItem>
-                        ))}
-                    </DashboardPokemonList>
-                </DashboardPokemonNav>
-            </AsideMenu>
+            <AsideNav
+                pokemonName={pokemonName}
+                pokemonId={pokemonId}
+                colorMode={colorMode}
+                handlePokemon={handlePokemon}
+                loading={loading}
+                data={data}
+            />
 
             <DashboardMain bg={colorMode == 'light' ? '#00b4eb' : '#0d3e53'}>
                 <DashboardHeader>
