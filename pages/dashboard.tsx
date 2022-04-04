@@ -145,7 +145,7 @@ const Dashboard: NextPage = () => {
                         <PokemonTypeCard>
                             <DashboardCardTitle>Type</DashboardCardTitle>
                             {!pokemon.loading && pokemon.data.pokemon.types.map((type: any) =>
-                                <PokemonProperty key={Math.random()}>
+                                <PokemonProperty key={Math.random()} className={type.type.name}>
                                     {type.type.name}
                                 </PokemonProperty>
                             )}

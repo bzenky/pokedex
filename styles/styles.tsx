@@ -315,7 +315,70 @@ export const PokemonProperty = styled.span`
     &.attr:nth-child(6) {
         background: #4bc853;
     }
-        
+
+    &.normal {
+        background: #5e6aaf;
+    }
+
+    &.flying {
+        background: #455de7;
+    }
+
+    &.grass {
+        background: #4bc853;
+    }
+
+    &.rock {
+        background: #797979;
+    }
+
+    &.poison {
+        background: #a040a0;
+    }
+
+    &.fire {
+        background: #dd4b4a;
+    }
+    
+    &.water {
+        background: #006eea;
+    }
+
+    &.ice {
+        background: #3091ff;
+    }
+
+    &.electric {
+        background: #ffca00;
+    }
+
+    &.psychic {
+        background: #610199;
+    }
+
+    &.dragon {
+        background: #d40000;
+    }
+
+    &.fairy {
+        background: #ff9a56;
+    }
+
+    &.fighting {
+        background: #ff76a1;
+    }
+
+    &.ground {
+        background: #83656e;
+    }
+
+    &.ghost {
+        background: #9c9c9c;
+    }
+
+    &.steel {
+        background: #5a5a5a;
+    }
 `
 
 export const DashboardMinorCard = styled.div`
