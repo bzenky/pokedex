@@ -2,16 +2,15 @@ import type { NextPage } from 'next'
 import { useState } from 'react'
 import { useColorMode } from '@chakra-ui/react'
 import { gql, useQuery } from '@apollo/client';
+import { AsideNav } from '../components/AsideNav'
+import { DashHeader } from '../components/DashHeader';
+import { DashLeftCards } from '../components/DashLeftCards';
+import { DashRightCards } from '../components/DashRightCards';
 import {
     DashboardCards,
     DashboardContent,
     DashboardMain,
 } from '../styles/styles'
-
-import { AsideNav } from '../components/AsideNav'
-import { DashHeader } from '../components/DashHeader';
-import { DashLeftCards } from '../components/DashLeftCards';
-import { DashRightCards } from '../components/DashRightCards';
 
 const Dashboard: NextPage = () => {
     const { colorMode, toggleColorMode } = useColorMode()
