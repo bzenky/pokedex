@@ -3,7 +3,7 @@
 
 A simple application to test, learn, practice and study some technologies. It´s a pokedex containing the first generation (#151) of pokemons.
 
-![App Screenshot](https://i.imgur.com/6abk1uH.png)
+![App Screenshot](https://i.imgur.com/zMY8Ptc.png)
 
 ## Stacks
 
