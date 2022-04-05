@@ -80,6 +80,7 @@ export const AsideMenu = styled.div<{ bg: string }>`
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 20%;
     padding: 16px;
@@ -201,6 +202,8 @@ export const DashboardPokemonListItem = styled.li`
 `
 
 export const PokemonName = styled.h2`
+    display: flex;
+    align-items: center;
     font-size: 40px;
     text-transform: uppercase;
 `
@@ -237,7 +240,7 @@ export const DashboardRightCards = styled.div`
 
 export const DashboardCardTitle = styled.h3`
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: #252525;
 
     @media (max-width: 1919px) {

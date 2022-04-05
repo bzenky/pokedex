@@ -7,17 +7,17 @@ import { DashHeader } from '../components/DashHeader';
 import { DashLeftCards } from '../components/DashLeftCards';
 import { DashRightCards } from '../components/DashRightCards';
 import {
-    DashboardCards,
-    DashboardContent,
-    DashboardMain,
+  DashboardCards,
+  DashboardContent,
+  DashboardMain,
 } from '../styles/styles'
 
 const Dashboard: NextPage = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
-    const [pokemonName, setPokemonName] = useState("bulbasaur")
-    const [pokemonId, setPokemonId] = useState(1)
+  const { colorMode, toggleColorMode } = useColorMode()
+  const [pokemonName, setPokemonName] = useState("bulbasaur")
+  const [pokemonId, setPokemonId] = useState(1)
 
-    const GET_POKEMONS = gql`
+  const GET_POKEMONS = gql`
     query pokemons($limit: Int, $offset: Int) {
         pokemons(limit: $limit, offset: $offset) {
           results {
@@ -28,7 +28,7 @@ const Dashboard: NextPage = () => {
       }
     `;
 
-    const GET_POKEMON = gql`
+  const GET_POKEMON = gql`
     query pokemon($name: String!) {
         pokemon(name: $name) {
             height
@@ -51,53 +51,54 @@ const Dashboard: NextPage = () => {
       }
     `;
 
-    const gqlVariables = {
-        limit: 151,
-        offset: 0,
-    };
+  const gqlVariables = {
+    limit: 151,
+    offset: 0,
+  };
 
-    const { data, loading } = useQuery(GET_POKEMONS, {
-        variables: gqlVariables,
-    });
+  const { data, loading } = useQuery(GET_POKEMONS, {
+    variables: gqlVariables,
+  });
 
-    const pokemon = useQuery(GET_POKEMON, {
-        variables: { name: pokemonName },
-    })
+  const pokemon = useQuery(GET_POKEMON, {
+    variables: { name: pokemonName },
+  })
 
-    function handlePokemon(pokemonName: string, pokemonId: number) {
-        setPokemonName(pokemonName)
-        setPokemonId(pokemonId)
-    }
+  function handlePokemon(pokemonName: string, pokemonId: number) {
+    setPokemonName(pokemonName)
+    setPokemonId(pokemonId)
+  }
 
-    return (
-        <DashboardContent>
-            <AsideNav
-                pokemonName={pokemonName}
-                pokemonId={pokemonId}
-                colorMode={colorMode}
-                handlePokemon={handlePokemon}
-                loading={loading}
-                data={data}
-            />
+  return (
+    <DashboardContent>
+      <AsideNav
+        pokemonName={pokemonName}
+        pokemonId={pokemonId}
+        colorMode={colorMode}
+        handlePokemon={handlePokemon}
+        loading={loading}
+        data={data}
+      />
 
-            <DashboardMain bg={colorMode == 'light' ? '#00b4eb' : '#0d3e53'}>
-                <DashHeader
-                    pokemonId={pokemonId}
-                    pokemonName={pokemonName}
-                    colorMode={colorMode}
-                    toggleColorMode={toggleColorMode}
-                />
+      <DashboardMain bg={colorMode == 'light' ? '#00b4eb' : '#0d3e53'}>
+        <DashHeader
+          pokemonId={pokemonId}
+          pokemonName={pokemonName}
+          colorMode={colorMode}
+          toggleColorMode={toggleColorMode}
+          pokemon={pokemon}
+        />
 
-                <DashboardCards>
-                    <DashLeftCards
-                        pokemon={pokemon}
-                    />
+        <DashboardCards>
+          <DashLeftCards
+            pokemon={pokemon}
+          />
 
-                    <DashRightCards />
-                </DashboardCards>
-            </DashboardMain>
-        </DashboardContent>
-    )
+          <DashRightCards />
+        </DashboardCards>
+      </DashboardMain>
+    </DashboardContent>
+  )
 }
 
 export default Dashboard
