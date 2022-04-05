@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-export const Main = styled.main`
+export const Main = styled.main<{ bg: string }>`
     width: 100vw;
     height: 100vh;
-    background: #FCFCFD;
+    background: ${props => props.bg};
   `
 
-export const Header = styled.div`
-    background: #dd4b4a;
+export const Header = styled.div<{ bg: string }>`
+    background: ${props => props.bg};
   `
 
 export const Content = styled.div`
