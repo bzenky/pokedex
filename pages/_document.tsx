@@ -33,7 +33,14 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang='en'>
-                <Head />
+                <Head>
+                    <title>Simple Pokedex</title>
+                    <meta name="description" content="Actually it´s just a simple pokedex, coded by an ordinary trainer."></meta>
+                    <meta property="og:type" content="website" />
+                    <meta name="og:title" property="og:title" content="Pokedex"></meta>
+                    <meta property="og:image" content="https://i.imgur.com/zMY8Ptc.png"></meta>
+                    <meta name="robots" content="index, follow"></meta>
+                </Head>
                 <body>
                     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
                     <Main />
