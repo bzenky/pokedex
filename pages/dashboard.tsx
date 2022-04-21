@@ -94,7 +94,10 @@ const Dashboard: NextPage = () => {
             pokemon={pokemon}
           />
 
-          <DashRightCards />
+          <DashRightCards
+            loading={pokemon.loading}
+            pokemonId={pokemonId}
+          />
         </DashboardCards>
       </DashboardMain>
     </DashboardContent>

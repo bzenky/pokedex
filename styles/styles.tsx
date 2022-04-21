@@ -432,6 +432,7 @@ export const PokemonEvolutionCard = styled.div`
     display: flex;
     padding: 16px;
     width: 100%;
+    min-height: 146px;
     background: #fff;
     border-radius: 8px;
 `

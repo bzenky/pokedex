@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import {
     DashboardCardTitle,
     DashboardRightCards,
@@ -7,19 +8,38 @@ import {
     PokemonEvolutionCard,
 } from '../../styles/styles'
 
-export function DashRightCards() {
+import { evolutionChains } from '../../utils/evolutionChains'
+
+import PokeballGif from '../../public/pokeball.gif'
+
+type EvolutionProps = {
+    id: number
+    name: string
+    image: string
+}
+
+type ParentProps = {
+    pokemonId: number
+    loading: boolean
+}
+
+export function DashRightCards({ pokemonId, loading }: ParentProps) {
+    const pokemon = evolutionChains[pokemonId - 1]
+
     return (
         <DashboardRightCards>
             <PokemonEvolutionCard>
                 <DashboardCardTitle>Evolution</DashboardCardTitle>
-                <Pokemon>
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png" alt="Ivy" width={90} height={90} />
-                    Ivysaur
-                </Pokemon>
-                <Pokemon>
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png" alt="Venos" width={90} height={90} />
-                    Venusaur
-                </Pokemon>
+                {pokemon.evolutionChain &&
+                    pokemon.evolutionChain.map((evolution: EvolutionProps) => {
+                        return (
+                            <Pokemon key={evolution.id}>
+                                <Image src={loading ? PokeballGif : evolution.image} alt="Ivy" width={90} height={90} />
+                                {evolution.name}
+                            </Pokemon>
+                        )
+                    })
+                }
             </PokemonEvolutionCard>
 
             <PokemonDescriptionCard>
