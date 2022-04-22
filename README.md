@@ -9,6 +9,10 @@ A simple application to test, learn, practice and study some technologies. It´s
 
 NextJS, GraphQL, Apollo, Styled Components, Chakra-UI, SVGR.
 
+## Utils
+
+I created a file to make it easier to work with the pokemon evolutions, so if you need something similar to your project, check it out [evolutionChains](https://github.com/bzenky/pokedex/blob/main/utils/evolutionChains.js)
+
 ## Installation
 
 clone or download and run
