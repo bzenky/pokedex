@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import { Skeleton, SkeletonText } from '@chakra-ui/react'
 import Image from 'next/image'
-import axios from 'axios'
 import {
     DashboardCardTitle,
     DashboardRightCards,
@@ -58,9 +58,15 @@ export function DashRightCards({ pokemonId, loading }: ParentProps) {
             </PokemonEvolutionCard>
 
             <PokemonDescriptionCard>
-                <PokemonDescription>
-                    {pokemonDescription}
-                </PokemonDescription>
+
+                {loading
+                    ? <SkeletonText noOfLines={3} spacing={4} />
+                    : (
+                        <PokemonDescription>
+                            {pokemonDescription}
+                        </PokemonDescription>
+                    )
+                }
             </PokemonDescriptionCard>
         </DashboardRightCards>
     )
