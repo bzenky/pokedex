@@ -3,11 +3,16 @@
 
 A simple application to test, learn, practice and study some technologies. It´s a pokedex containing the first generation (#151) of pokemons.
 
-![App Screenshot](https://i.imgur.com/zMY8Ptc.png)
+![App Screenshot](https://i.imgur.com/LodxUt3.png)
 
 ## Stacks
 
 NextJS, GraphQL, Apollo, Styled Components, Chakra-UI, SVGR.
+
+## API´s
+
+* [GraphQLPokeAPI](https://github.com/mazipan/graphql-pokeapi)
+* [PokeAPI](https://github.com/PokeAPI/pokeapi)
 
 ## Utils
 
