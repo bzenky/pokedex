@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import Image from 'next/image'
+import axios from 'axios'
 import {
     DashboardCardTitle,
     DashboardRightCards,
@@ -24,7 +26,20 @@ type ParentProps = {
 }
 
 export function DashRightCards({ pokemonId, loading }: ParentProps) {
+    const [pokemonDescription, setPokemonDescription] = useState('')
     const pokemon = evolutionChains[pokemonId - 1]
+    const axios = require('axios')
+
+    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`)
+        .then((response: any) => {
+            setPokemonDescription(`
+                ${response.data.flavor_text_entries[0].language.name === 'en'
+                    ? response.data.flavor_text_entries[0].flavor_text
+                    : response.data.flavor_text_entries[1].flavor_text}
+                ${response.data.flavor_text_entries[2].flavor_text}
+                ${response.data.flavor_text_entries[5].flavor_text}
+            `.replace(/\f/g, ' '))
+        })
 
     return (
         <DashboardRightCards>
@@ -44,10 +59,7 @@ export function DashRightCards({ pokemonId, loading }: ParentProps) {
 
             <PokemonDescriptionCard>
                 <PokemonDescription>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio nemo ratione non, blanditiis praesentium sed quis eveniet magnam dolorem obcaecati eum suscipit iste voluptatum nam. Aliquam iusto ut incidunt laudantium.
-                </PokemonDescription>
-                <PokemonDescription>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio nemo ratione non, blanditiis praesentium sed quis eveniet magnam dolorem obcaecati eum suscipit iste voluptatum nam. Aliquam iusto ut incidunt laudantium.
+                    {pokemonDescription}
                 </PokemonDescription>
             </PokemonDescriptionCard>
         </DashboardRightCards>
