@@ -29,6 +29,9 @@ type ParentProps = {
                 }
             }
         }
+        variables?: {
+            name?: string
+        }
     }
 }
 
@@ -47,7 +50,7 @@ export function DashLeftCards({ pokemon }: ParentProps) {
     return (
         <DashboardLeftCards>
             <PokemonImgCard>
-                <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={370} height={370} />
+                <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={250} height={250} alt="Pokemon" />
             </PokemonImgCard>
             <PokemonTypeCard>
                 <DashboardCardTitle>Type</DashboardCardTitle>

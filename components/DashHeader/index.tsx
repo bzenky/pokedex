@@ -24,7 +24,7 @@ export function DashHeader({ pokemon, pokemonId, pokemonName, colorMode, toggleC
         <DashboardHeader>
             <PokemonName>
                 {IdFormat(pokemonId)} - {pokemonName}
-                <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={60} height={60} />
+                <Image src={pokemon.loading ? PokeballGif : pokemon.data.pokemon.sprites.front_default} width={60} height={60} alt="Pokemon" />
             </PokemonName>
             <ColorMode>
                 <Icon as={SunIcon} />
