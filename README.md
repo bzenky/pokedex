@@ -26,4 +26,4 @@ clone or download and run
   yarn
 ```
 
-also avaible at https://pokedex-bzenky.vercel.app/
+also avaible at https://www.pokedex.bzenky.dev/
